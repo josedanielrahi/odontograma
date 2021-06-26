@@ -1,0 +1,57 @@
+﻿@model Odontograma.Models.Odo.CitaEditarModel
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="mt-4 container">
+        <div class="row">
+            <div class="col">
+                <h2>Editar cita</h2>
+                <div class="p-3 alert-danger">
+                    <strong>¿Cambiaron los planes?</strong> no te preocupes puedes cambiar tu cita
+                </div>
+                @using (Html.BeginForm("Editar", "Paciente", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    @Html.HiddenFor(m => m.CitaId)
+
+                    <div class="input-group input-group-sm mb-3">
+                        @Html.LabelFor(m => m.Fecha, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(m => m.Fecha, new { @class = "form-control", @type = "date" })
+                        </div>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3">
+                        @Html.LabelFor(m => m.Hora, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(m => m.Hora, new { @class = "form-control", @type = "time" })
+                        </div>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3">
+                        @Html.LabelFor(m => m.ClinicaId, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.DropDownList("ClinicaId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ClinicaId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="col-md-7">
+                            <div class="text-right">
+                                <input type="submit" class="btn btn-lg btn-dark" value="Actualizar" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+

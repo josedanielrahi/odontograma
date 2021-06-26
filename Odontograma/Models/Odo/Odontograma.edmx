@@ -1,0 +1,1480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AntFam">
+          <Key>
+            <PropertyRef Name="AntFamId" />
+          </Key>
+          <Property Name="AntFamId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ParentescoId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="EnfermedadId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PacienteId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AntPer">
+          <Key>
+            <PropertyRef Name="AntPerId" />
+          </Key>
+          <Property Name="AntPerId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="EnfermedadId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PacienteId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cita">
+          <Key>
+            <PropertyRef Name="CitaId" />
+          </Key>
+          <Property Name="CitaId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Fecha" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Hora" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ClinicaId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PacienteId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clinica">
+          <Key>
+            <PropertyRef Name="ClinicaId" />
+          </Key>
+          <Property Name="ClinicaId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Derechohabiencia">
+          <Key>
+            <PropertyRef Name="DerechohabienciaId" />
+          </Key>
+          <Property Name="DerechohabienciaId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleCita">
+          <Key>
+            <PropertyRef Name="DetalleCitaId" />
+          </Key>
+          <Property Name="DetalleCitaId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Descripcion" Type="text" Nullable="false" />
+          <Property Name="Observacion" Type="text" Nullable="false" />
+          <Property Name="CitaId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="EstudianteId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetallePaciente">
+          <Key>
+            <PropertyRef Name="DetPacId" />
+          </Key>
+          <Property Name="DetPacId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Calle" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Colonia" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cp" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DerechohabienciaId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="EstadoId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="OcupacionId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="EscolaridadId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PacienteId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Diagnostico">
+          <Key>
+            <PropertyRef Name="DiagnosticoId" />
+          </Key>
+          <Property Name="DiagnosticoId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Diente" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sintoma" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CitaId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SintomaId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Enfermedad">
+          <Key>
+            <PropertyRef Name="EnfermedadId" />
+          </Key>
+          <Property Name="EnfermedadId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Escolaridad">
+          <Key>
+            <PropertyRef Name="EscolaridadId" />
+          </Key>
+          <Property Name="EscolaridadId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Escuela">
+          <Key>
+            <PropertyRef Name="EscuelaId" />
+          </Key>
+          <Property Name="EscuelaId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="EstadoId" />
+          </Key>
+          <Property Name="EstadoId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estudiante">
+          <Key>
+            <PropertyRef Name="EstudianteId" />
+          </Key>
+          <Property Name="EstudianteId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sexo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EscuelaId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ocupacion">
+          <Key>
+            <PropertyRef Name="OcupacionId" />
+          </Key>
+          <Property Name="OcupacionId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="PacienteId" />
+          </Key>
+          <Property Name="PacienteId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sexo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parentesco">
+          <Key>
+            <PropertyRef Name="ParentescoId" />
+          </Key>
+          <Property Name="ParentescoId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sintoma">
+          <Key>
+            <PropertyRef Name="SintomaId" />
+          </Key>
+          <Property Name="SintomaId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AntFam__Enfermed__0E04126B">
+          <End Role="Enfermedad" Type="Self.Enfermedad" Multiplicity="1" />
+          <End Role="AntFam" Type="Self.AntFam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enfermedad">
+              <PropertyRef Name="EnfermedadId" />
+            </Principal>
+            <Dependent Role="AntFam">
+              <PropertyRef Name="EnfermedadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AntFam__Paciente__0EF836A4">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="AntFam" Type="Self.AntFam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PacienteId" />
+            </Principal>
+            <Dependent Role="AntFam">
+              <PropertyRef Name="PacienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AntFam__Parentes__0D0FEE32">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+          <End Role="AntFam" Type="Self.AntFam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="ParentescoId" />
+            </Principal>
+            <Dependent Role="AntFam">
+              <PropertyRef Name="ParentescoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AntPer__Enfermed__084B3915">
+          <End Role="Enfermedad" Type="Self.Enfermedad" Multiplicity="1" />
+          <End Role="AntPer" Type="Self.AntPer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enfermedad">
+              <PropertyRef Name="EnfermedadId" />
+            </Principal>
+            <Dependent Role="AntPer">
+              <PropertyRef Name="EnfermedadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AntPer__Paciente__093F5D4E">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="AntPer" Type="Self.AntPer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PacienteId" />
+            </Principal>
+            <Dependent Role="AntPer">
+              <PropertyRef Name="PacienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__ClinicaId__4A4E069C">
+          <End Role="Clinica" Type="Self.Clinica" Multiplicity="1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica">
+              <PropertyRef Name="ClinicaId" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="ClinicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__PacienteId__4B422AD5">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PacienteId" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="PacienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleCi__CitaI__57A801BA">
+          <End Role="Cita" Type="Self.Cita" Multiplicity="1" />
+          <End Role="DetalleCita" Type="Self.DetalleCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cita">
+              <PropertyRef Name="CitaId" />
+            </Principal>
+            <Dependent Role="DetalleCita">
+              <PropertyRef Name="CitaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleCi__Estud__589C25F3">
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+          <End Role="DetalleCita" Type="Self.DetalleCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiante">
+              <PropertyRef Name="EstudianteId" />
+            </Principal>
+            <Dependent Role="DetalleCita">
+              <PropertyRef Name="EstudianteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallePa__Derec__318258D2">
+          <End Role="Derechohabiencia" Type="Self.Derechohabiencia" Multiplicity="1" />
+          <End Role="DetallePaciente" Type="Self.DetallePaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Derechohabiencia">
+              <PropertyRef Name="DerechohabienciaId" />
+            </Principal>
+            <Dependent Role="DetallePaciente">
+              <PropertyRef Name="DerechohabienciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallePa__Escol__345EC57D">
+          <End Role="Escolaridad" Type="Self.Escolaridad" Multiplicity="1" />
+          <End Role="DetallePaciente" Type="Self.DetallePaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escolaridad">
+              <PropertyRef Name="EscolaridadId" />
+            </Principal>
+            <Dependent Role="DetallePaciente">
+              <PropertyRef Name="EscolaridadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallePa__Estad__32767D0B">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="DetallePaciente" Type="Self.DetallePaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstadoId" />
+            </Principal>
+            <Dependent Role="DetallePaciente">
+              <PropertyRef Name="EstadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallePa__Ocupa__336AA144">
+          <End Role="Ocupacion" Type="Self.Ocupacion" Multiplicity="1" />
+          <End Role="DetallePaciente" Type="Self.DetallePaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ocupacion">
+              <PropertyRef Name="OcupacionId" />
+            </Principal>
+            <Dependent Role="DetallePaciente">
+              <PropertyRef Name="OcupacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallePa__Pacie__5D60DB10">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="DetallePaciente" Type="Self.DetallePaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PacienteId" />
+            </Principal>
+            <Dependent Role="DetallePaciente">
+              <PropertyRef Name="PacienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnosti__CitaI__4F12BBB9">
+          <End Role="Cita" Type="Self.Cita" Multiplicity="1" />
+          <End Role="Diagnostico" Type="Self.Diagnostico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cita">
+              <PropertyRef Name="CitaId" />
+            </Principal>
+            <Dependent Role="Diagnostico">
+              <PropertyRef Name="CitaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnosti__Sinto__6319B466">
+          <End Role="Sintoma" Type="Self.Sintoma" Multiplicity="0..1" />
+          <End Role="Diagnostico" Type="Self.Diagnostico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sintoma">
+              <PropertyRef Name="SintomaId" />
+            </Principal>
+            <Dependent Role="Diagnostico">
+              <PropertyRef Name="SintomaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Estudiant__Escue__17C286CF">
+          <End Role="Escuela" Type="Self.Escuela" Multiplicity="1" />
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escuela">
+              <PropertyRef Name="EscuelaId" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="EscuelaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Estudiant__UserI__18B6AB08">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Paciente__UserId__11158940">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="AntFam" EntityType="Self.AntFam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AntPer" EntityType="Self.AntPer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cita" EntityType="Self.Cita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clinica" EntityType="Self.Clinica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Derechohabiencia" EntityType="Self.Derechohabiencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleCita" EntityType="Self.DetalleCita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetallePaciente" EntityType="Self.DetallePaciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diagnostico" EntityType="Self.Diagnostico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enfermedad" EntityType="Self.Enfermedad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Escolaridad" EntityType="Self.Escolaridad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Escuela" EntityType="Self.Escuela" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estudiante" EntityType="Self.Estudiante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ocupacion" EntityType="Self.Ocupacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parentesco" EntityType="Self.Parentesco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sintoma" EntityType="Self.Sintoma" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AntFam__Enfermed__0E04126B" Association="Self.FK__AntFam__Enfermed__0E04126B">
+            <End Role="Enfermedad" EntitySet="Enfermedad" />
+            <End Role="AntFam" EntitySet="AntFam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AntFam__Paciente__0EF836A4" Association="Self.FK__AntFam__Paciente__0EF836A4">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="AntFam" EntitySet="AntFam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AntFam__Parentes__0D0FEE32" Association="Self.FK__AntFam__Parentes__0D0FEE32">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="AntFam" EntitySet="AntFam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AntPer__Enfermed__084B3915" Association="Self.FK__AntPer__Enfermed__084B3915">
+            <End Role="Enfermedad" EntitySet="Enfermedad" />
+            <End Role="AntPer" EntitySet="AntPer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AntPer__Paciente__093F5D4E" Association="Self.FK__AntPer__Paciente__093F5D4E">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="AntPer" EntitySet="AntPer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__ClinicaId__4A4E069C" Association="Self.FK__Cita__ClinicaId__4A4E069C">
+            <End Role="Clinica" EntitySet="Clinica" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__PacienteId__4B422AD5" Association="Self.FK__Cita__PacienteId__4B422AD5">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleCi__CitaI__57A801BA" Association="Self.FK__DetalleCi__CitaI__57A801BA">
+            <End Role="Cita" EntitySet="Cita" />
+            <End Role="DetalleCita" EntitySet="DetalleCita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleCi__Estud__589C25F3" Association="Self.FK__DetalleCi__Estud__589C25F3">
+            <End Role="Estudiante" EntitySet="Estudiante" />
+            <End Role="DetalleCita" EntitySet="DetalleCita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallePa__Derec__318258D2" Association="Self.FK__DetallePa__Derec__318258D2">
+            <End Role="Derechohabiencia" EntitySet="Derechohabiencia" />
+            <End Role="DetallePaciente" EntitySet="DetallePaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallePa__Escol__345EC57D" Association="Self.FK__DetallePa__Escol__345EC57D">
+            <End Role="Escolaridad" EntitySet="Escolaridad" />
+            <End Role="DetallePaciente" EntitySet="DetallePaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallePa__Estad__32767D0B" Association="Self.FK__DetallePa__Estad__32767D0B">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="DetallePaciente" EntitySet="DetallePaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallePa__Ocupa__336AA144" Association="Self.FK__DetallePa__Ocupa__336AA144">
+            <End Role="Ocupacion" EntitySet="Ocupacion" />
+            <End Role="DetallePaciente" EntitySet="DetallePaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallePa__Pacie__5D60DB10" Association="Self.FK__DetallePa__Pacie__5D60DB10">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="DetallePaciente" EntitySet="DetallePaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__CitaI__4F12BBB9" Association="Self.FK__Diagnosti__CitaI__4F12BBB9">
+            <End Role="Cita" EntitySet="Cita" />
+            <End Role="Diagnostico" EntitySet="Diagnostico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__Sinto__6319B466" Association="Self.FK__Diagnosti__Sinto__6319B466">
+            <End Role="Sintoma" EntitySet="Sintoma" />
+            <End Role="Diagnostico" EntitySet="Diagnostico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Estudiant__Escue__17C286CF" Association="Self.FK__Estudiant__Escue__17C286CF">
+            <End Role="Escuela" EntitySet="Escuela" />
+            <End Role="Estudiante" EntitySet="Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Estudiant__UserI__18B6AB08" Association="Self.FK__Estudiant__UserI__18B6AB08">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Estudiante" EntitySet="Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Paciente__UserId__11158940" Association="Self.FK__Paciente__UserId__11158940">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AntFam">
+          <Key>
+            <PropertyRef Name="AntFamId" />
+          </Key>
+          <Property Name="AntFamId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ParentescoId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EnfermedadId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PacienteId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Enfermedad" Relationship="Self.FK__AntFam__Enfermed__0E04126B" FromRole="AntFam" ToRole="Enfermedad" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__AntFam__Paciente__0EF836A4" FromRole="AntFam" ToRole="Paciente" />
+          <NavigationProperty Name="Parentesco" Relationship="Self.FK__AntFam__Parentes__0D0FEE32" FromRole="AntFam" ToRole="Parentesco" />
+        </EntityType>
+        <EntityType Name="AntPer">
+          <Key>
+            <PropertyRef Name="AntPerId" />
+          </Key>
+          <Property Name="AntPerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EnfermedadId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PacienteId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Enfermedad" Relationship="Self.FK__AntPer__Enfermed__084B3915" FromRole="AntPer" ToRole="Enfermedad" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__AntPer__Paciente__093F5D4E" FromRole="AntPer" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Estudiante" Relationship="Self.FK__Estudiant__UserI__18B6AB08" FromRole="AspNetUsers" ToRole="Estudiante" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__Paciente__UserId__11158940" FromRole="AspNetUsers" ToRole="Paciente" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Cita">
+          <Key>
+            <PropertyRef Name="CitaId" />
+          </Key>
+          <Property Name="CitaId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fecha" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Hora" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClinicaId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PacienteId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Clinica" Relationship="Self.FK__Cita__ClinicaId__4A4E069C" FromRole="Cita" ToRole="Clinica" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__Cita__PacienteId__4B422AD5" FromRole="Cita" ToRole="Paciente" />
+          <NavigationProperty Name="DetalleCita" Relationship="Self.FK__DetalleCi__CitaI__57A801BA" FromRole="Cita" ToRole="DetalleCita" />
+          <NavigationProperty Name="Diagnostico" Relationship="Self.FK__Diagnosti__CitaI__4F12BBB9" FromRole="Cita" ToRole="Diagnostico" />
+        </EntityType>
+        <EntityType Name="Clinica">
+          <Key>
+            <PropertyRef Name="ClinicaId" />
+          </Key>
+          <Property Name="ClinicaId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cita" Relationship="Self.FK__Cita__ClinicaId__4A4E069C" FromRole="Clinica" ToRole="Cita" />
+        </EntityType>
+        <EntityType Name="Derechohabiencia">
+          <Key>
+            <PropertyRef Name="DerechohabienciaId" />
+          </Key>
+          <Property Name="DerechohabienciaId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DetallePaciente" Relationship="Self.FK__DetallePa__Derec__318258D2" FromRole="Derechohabiencia" ToRole="DetallePaciente" />
+        </EntityType>
+        <EntityType Name="DetalleCita">
+          <Key>
+            <PropertyRef Name="DetalleCitaId" />
+          </Key>
+          <Property Name="DetalleCitaId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CitaId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EstudianteId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cita" Relationship="Self.FK__DetalleCi__CitaI__57A801BA" FromRole="DetalleCita" ToRole="Cita" />
+          <NavigationProperty Name="Estudiante" Relationship="Self.FK__DetalleCi__Estud__589C25F3" FromRole="DetalleCita" ToRole="Estudiante" />
+        </EntityType>
+        <EntityType Name="DetallePaciente">
+          <Key>
+            <PropertyRef Name="DetPacId" />
+          </Key>
+          <Property Name="DetPacId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Calle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Colonia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cp" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DerechohabienciaId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EstadoId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OcupacionId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EscolaridadId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PacienteId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Derechohabiencia" Relationship="Self.FK__DetallePa__Derec__318258D2" FromRole="DetallePaciente" ToRole="Derechohabiencia" />
+          <NavigationProperty Name="Escolaridad" Relationship="Self.FK__DetallePa__Escol__345EC57D" FromRole="DetallePaciente" ToRole="Escolaridad" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK__DetallePa__Estad__32767D0B" FromRole="DetallePaciente" ToRole="Estado" />
+          <NavigationProperty Name="Ocupacion" Relationship="Self.FK__DetallePa__Ocupa__336AA144" FromRole="DetallePaciente" ToRole="Ocupacion" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK__DetallePa__Pacie__5D60DB10" FromRole="DetallePaciente" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="Diagnostico">
+          <Key>
+            <PropertyRef Name="DiagnosticoId" />
+          </Key>
+          <Property Name="DiagnosticoId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Diente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sintoma" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CitaId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SintomaId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cita" Relationship="Self.FK__Diagnosti__CitaI__4F12BBB9" FromRole="Diagnostico" ToRole="Cita" />
+          <NavigationProperty Name="Sintoma1" Relationship="Self.FK__Diagnosti__Sinto__6319B466" FromRole="Diagnostico" ToRole="Sintoma" />
+        </EntityType>
+        <EntityType Name="Enfermedad">
+          <Key>
+            <PropertyRef Name="EnfermedadId" />
+          </Key>
+          <Property Name="EnfermedadId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AntFam" Relationship="Self.FK__AntFam__Enfermed__0E04126B" FromRole="Enfermedad" ToRole="AntFam" />
+          <NavigationProperty Name="AntPer" Relationship="Self.FK__AntPer__Enfermed__084B3915" FromRole="Enfermedad" ToRole="AntPer" />
+        </EntityType>
+        <EntityType Name="Escolaridad">
+          <Key>
+            <PropertyRef Name="EscolaridadId" />
+          </Key>
+          <Property Name="EscolaridadId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DetallePaciente" Relationship="Self.FK__DetallePa__Escol__345EC57D" FromRole="Escolaridad" ToRole="DetallePaciente" />
+        </EntityType>
+        <EntityType Name="Escuela">
+          <Key>
+            <PropertyRef Name="EscuelaId" />
+          </Key>
+          <Property Name="EscuelaId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Estudiante" Relationship="Self.FK__Estudiant__Escue__17C286CF" FromRole="Escuela" ToRole="Estudiante" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="EstadoId" />
+          </Key>
+          <Property Name="EstadoId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DetallePaciente" Relationship="Self.FK__DetallePa__Estad__32767D0B" FromRole="Estado" ToRole="DetallePaciente" />
+        </EntityType>
+        <EntityType Name="Estudiante">
+          <Key>
+            <PropertyRef Name="EstudianteId" />
+          </Key>
+          <Property Name="EstudianteId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sexo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EscuelaId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__Estudiant__UserI__18B6AB08" FromRole="Estudiante" ToRole="AspNetUsers" />
+          <NavigationProperty Name="DetalleCita" Relationship="Self.FK__DetalleCi__Estud__589C25F3" FromRole="Estudiante" ToRole="DetalleCita" />
+          <NavigationProperty Name="Escuela" Relationship="Self.FK__Estudiant__Escue__17C286CF" FromRole="Estudiante" ToRole="Escuela" />
+        </EntityType>
+        <EntityType Name="Ocupacion">
+          <Key>
+            <PropertyRef Name="OcupacionId" />
+          </Key>
+          <Property Name="OcupacionId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DetallePaciente" Relationship="Self.FK__DetallePa__Ocupa__336AA144" FromRole="Ocupacion" ToRole="DetallePaciente" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="PacienteId" />
+          </Key>
+          <Property Name="PacienteId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sexo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AntFam" Relationship="Self.FK__AntFam__Paciente__0EF836A4" FromRole="Paciente" ToRole="AntFam" />
+          <NavigationProperty Name="AntPer" Relationship="Self.FK__AntPer__Paciente__093F5D4E" FromRole="Paciente" ToRole="AntPer" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__Paciente__UserId__11158940" FromRole="Paciente" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Cita" Relationship="Self.FK__Cita__PacienteId__4B422AD5" FromRole="Paciente" ToRole="Cita" />
+          <NavigationProperty Name="DetallePaciente" Relationship="Self.FK__DetallePa__Pacie__5D60DB10" FromRole="Paciente" ToRole="DetallePaciente" />
+        </EntityType>
+        <EntityType Name="Parentesco">
+          <Key>
+            <PropertyRef Name="ParentescoId" />
+          </Key>
+          <Property Name="ParentescoId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AntFam" Relationship="Self.FK__AntFam__Parentes__0D0FEE32" FromRole="Parentesco" ToRole="AntFam" />
+        </EntityType>
+        <EntityType Name="Sintoma">
+          <Key>
+            <PropertyRef Name="SintomaId" />
+          </Key>
+          <Property Name="SintomaId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Diagnostico" Relationship="Self.FK__Diagnosti__Sinto__6319B466" FromRole="Sintoma" ToRole="Diagnostico" />
+        </EntityType>
+        <Association Name="FK__AntFam__Enfermed__0E04126B">
+          <End Role="Enfermedad" Type="Self.Enfermedad" Multiplicity="1" />
+          <End Role="AntFam" Type="Self.AntFam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enfermedad">
+              <PropertyRef Name="EnfermedadId" />
+            </Principal>
+            <Dependent Role="AntFam">
+              <PropertyRef Name="EnfermedadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AntFam__Paciente__0EF836A4">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="AntFam" Type="Self.AntFam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PacienteId" />
+            </Principal>
+            <Dependent Role="AntFam">
+              <PropertyRef Name="PacienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AntFam__Parentes__0D0FEE32">
+          <End Role="Parentesco" Type="Self.Parentesco" Multiplicity="1" />
+          <End Role="AntFam" Type="Self.AntFam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parentesco">
+              <PropertyRef Name="ParentescoId" />
+            </Principal>
+            <Dependent Role="AntFam">
+              <PropertyRef Name="ParentescoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AntPer__Enfermed__084B3915">
+          <End Role="Enfermedad" Type="Self.Enfermedad" Multiplicity="1" />
+          <End Role="AntPer" Type="Self.AntPer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enfermedad">
+              <PropertyRef Name="EnfermedadId" />
+            </Principal>
+            <Dependent Role="AntPer">
+              <PropertyRef Name="EnfermedadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AntPer__Paciente__093F5D4E">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="AntPer" Type="Self.AntPer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PacienteId" />
+            </Principal>
+            <Dependent Role="AntPer">
+              <PropertyRef Name="PacienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Estudiant__UserI__18B6AB08">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Paciente__UserId__11158940">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Paciente">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__ClinicaId__4A4E069C">
+          <End Role="Clinica" Type="Self.Clinica" Multiplicity="1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica">
+              <PropertyRef Name="ClinicaId" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="ClinicaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__PacienteId__4B422AD5">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PacienteId" />
+            </Principal>
+            <Dependent Role="Cita">
+              <PropertyRef Name="PacienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleCi__CitaI__57A801BA">
+          <End Role="Cita" Type="Self.Cita" Multiplicity="1" />
+          <End Role="DetalleCita" Type="Self.DetalleCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cita">
+              <PropertyRef Name="CitaId" />
+            </Principal>
+            <Dependent Role="DetalleCita">
+              <PropertyRef Name="CitaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnosti__CitaI__4F12BBB9">
+          <End Role="Cita" Type="Self.Cita" Multiplicity="1" />
+          <End Role="Diagnostico" Type="Self.Diagnostico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cita">
+              <PropertyRef Name="CitaId" />
+            </Principal>
+            <Dependent Role="Diagnostico">
+              <PropertyRef Name="CitaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallePa__Derec__318258D2">
+          <End Role="Derechohabiencia" Type="Self.Derechohabiencia" Multiplicity="1" />
+          <End Role="DetallePaciente" Type="Self.DetallePaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Derechohabiencia">
+              <PropertyRef Name="DerechohabienciaId" />
+            </Principal>
+            <Dependent Role="DetallePaciente">
+              <PropertyRef Name="DerechohabienciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleCi__Estud__589C25F3">
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+          <End Role="DetalleCita" Type="Self.DetalleCita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiante">
+              <PropertyRef Name="EstudianteId" />
+            </Principal>
+            <Dependent Role="DetalleCita">
+              <PropertyRef Name="EstudianteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallePa__Escol__345EC57D">
+          <End Role="Escolaridad" Type="Self.Escolaridad" Multiplicity="1" />
+          <End Role="DetallePaciente" Type="Self.DetallePaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escolaridad">
+              <PropertyRef Name="EscolaridadId" />
+            </Principal>
+            <Dependent Role="DetallePaciente">
+              <PropertyRef Name="EscolaridadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallePa__Estad__32767D0B">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="DetallePaciente" Type="Self.DetallePaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="EstadoId" />
+            </Principal>
+            <Dependent Role="DetallePaciente">
+              <PropertyRef Name="EstadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallePa__Ocupa__336AA144">
+          <End Role="Ocupacion" Type="Self.Ocupacion" Multiplicity="1" />
+          <End Role="DetallePaciente" Type="Self.DetallePaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ocupacion">
+              <PropertyRef Name="OcupacionId" />
+            </Principal>
+            <Dependent Role="DetallePaciente">
+              <PropertyRef Name="OcupacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallePa__Pacie__5D60DB10">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="DetallePaciente" Type="Self.DetallePaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="PacienteId" />
+            </Principal>
+            <Dependent Role="DetallePaciente">
+              <PropertyRef Name="PacienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnosti__Sinto__6319B466">
+          <End Role="Sintoma" Type="Self.Sintoma" Multiplicity="0..1" />
+          <End Role="Diagnostico" Type="Self.Diagnostico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sintoma">
+              <PropertyRef Name="SintomaId" />
+            </Principal>
+            <Dependent Role="Diagnostico">
+              <PropertyRef Name="SintomaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Estudiant__Escue__17C286CF">
+          <End Role="Escuela" Type="Self.Escuela" Multiplicity="1" />
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escuela">
+              <PropertyRef Name="EscuelaId" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="EscuelaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ODataBase" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AntFam" EntityType="Self.AntFam" />
+          <EntitySet Name="AntPer" EntityType="Self.AntPer" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Cita" EntityType="Self.Cita" />
+          <EntitySet Name="Clinica" EntityType="Self.Clinica" />
+          <EntitySet Name="Derechohabiencia" EntityType="Self.Derechohabiencia" />
+          <EntitySet Name="DetalleCita" EntityType="Self.DetalleCita" />
+          <EntitySet Name="DetallePaciente" EntityType="Self.DetallePaciente" />
+          <EntitySet Name="Diagnostico" EntityType="Self.Diagnostico" />
+          <EntitySet Name="Enfermedad" EntityType="Self.Enfermedad" />
+          <EntitySet Name="Escolaridad" EntityType="Self.Escolaridad" />
+          <EntitySet Name="Escuela" EntityType="Self.Escuela" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Estudiante" EntityType="Self.Estudiante" />
+          <EntitySet Name="Ocupacion" EntityType="Self.Ocupacion" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" />
+          <EntitySet Name="Parentesco" EntityType="Self.Parentesco" />
+          <EntitySet Name="Sintoma" EntityType="Self.Sintoma" />
+          <AssociationSet Name="FK__AntFam__Enfermed__0E04126B" Association="Self.FK__AntFam__Enfermed__0E04126B">
+            <End Role="Enfermedad" EntitySet="Enfermedad" />
+            <End Role="AntFam" EntitySet="AntFam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AntFam__Paciente__0EF836A4" Association="Self.FK__AntFam__Paciente__0EF836A4">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="AntFam" EntitySet="AntFam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AntFam__Parentes__0D0FEE32" Association="Self.FK__AntFam__Parentes__0D0FEE32">
+            <End Role="Parentesco" EntitySet="Parentesco" />
+            <End Role="AntFam" EntitySet="AntFam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AntPer__Enfermed__084B3915" Association="Self.FK__AntPer__Enfermed__084B3915">
+            <End Role="Enfermedad" EntitySet="Enfermedad" />
+            <End Role="AntPer" EntitySet="AntPer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AntPer__Paciente__093F5D4E" Association="Self.FK__AntPer__Paciente__093F5D4E">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="AntPer" EntitySet="AntPer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Estudiant__UserI__18B6AB08" Association="Self.FK__Estudiant__UserI__18B6AB08">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Estudiante" EntitySet="Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Paciente__UserId__11158940" Association="Self.FK__Paciente__UserId__11158940">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Paciente" EntitySet="Paciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__ClinicaId__4A4E069C" Association="Self.FK__Cita__ClinicaId__4A4E069C">
+            <End Role="Clinica" EntitySet="Clinica" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__PacienteId__4B422AD5" Association="Self.FK__Cita__PacienteId__4B422AD5">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Cita" EntitySet="Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleCi__CitaI__57A801BA" Association="Self.FK__DetalleCi__CitaI__57A801BA">
+            <End Role="Cita" EntitySet="Cita" />
+            <End Role="DetalleCita" EntitySet="DetalleCita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__CitaI__4F12BBB9" Association="Self.FK__Diagnosti__CitaI__4F12BBB9">
+            <End Role="Cita" EntitySet="Cita" />
+            <End Role="Diagnostico" EntitySet="Diagnostico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallePa__Derec__318258D2" Association="Self.FK__DetallePa__Derec__318258D2">
+            <End Role="Derechohabiencia" EntitySet="Derechohabiencia" />
+            <End Role="DetallePaciente" EntitySet="DetallePaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleCi__Estud__589C25F3" Association="Self.FK__DetalleCi__Estud__589C25F3">
+            <End Role="Estudiante" EntitySet="Estudiante" />
+            <End Role="DetalleCita" EntitySet="DetalleCita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallePa__Escol__345EC57D" Association="Self.FK__DetallePa__Escol__345EC57D">
+            <End Role="Escolaridad" EntitySet="Escolaridad" />
+            <End Role="DetallePaciente" EntitySet="DetallePaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallePa__Estad__32767D0B" Association="Self.FK__DetallePa__Estad__32767D0B">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="DetallePaciente" EntitySet="DetallePaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallePa__Ocupa__336AA144" Association="Self.FK__DetallePa__Ocupa__336AA144">
+            <End Role="Ocupacion" EntitySet="Ocupacion" />
+            <End Role="DetallePaciente" EntitySet="DetallePaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallePa__Pacie__5D60DB10" Association="Self.FK__DetallePa__Pacie__5D60DB10">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="DetallePaciente" EntitySet="DetallePaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__Sinto__6319B466" Association="Self.FK__Diagnosti__Sinto__6319B466">
+            <End Role="Sintoma" EntitySet="Sintoma" />
+            <End Role="Diagnostico" EntitySet="Diagnostico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Estudiant__Escue__17C286CF" Association="Self.FK__Estudiant__Escue__17C286CF">
+            <End Role="Escuela" EntitySet="Escuela" />
+            <End Role="Estudiante" EntitySet="Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="ODataBase">
+          <EntitySetMapping Name="AntFam">
+            <EntityTypeMapping TypeName="Models.AntFam">
+              <MappingFragment StoreEntitySet="AntFam">
+                <ScalarProperty Name="AntFamId" ColumnName="AntFamId" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="ParentescoId" ColumnName="ParentescoId" />
+                <ScalarProperty Name="EnfermedadId" ColumnName="EnfermedadId" />
+                <ScalarProperty Name="PacienteId" ColumnName="PacienteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AntPer">
+            <EntityTypeMapping TypeName="Models.AntPer">
+              <MappingFragment StoreEntitySet="AntPer">
+                <ScalarProperty Name="AntPerId" ColumnName="AntPerId" />
+                <ScalarProperty Name="EnfermedadId" ColumnName="EnfermedadId" />
+                <ScalarProperty Name="PacienteId" ColumnName="PacienteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Models.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Models.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Models.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Models.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cita">
+            <EntityTypeMapping TypeName="Models.Cita">
+              <MappingFragment StoreEntitySet="Cita">
+                <ScalarProperty Name="CitaId" ColumnName="CitaId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="ClinicaId" ColumnName="ClinicaId" />
+                <ScalarProperty Name="PacienteId" ColumnName="PacienteId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clinica">
+            <EntityTypeMapping TypeName="Models.Clinica">
+              <MappingFragment StoreEntitySet="Clinica">
+                <ScalarProperty Name="ClinicaId" ColumnName="ClinicaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Derechohabiencia">
+            <EntityTypeMapping TypeName="Models.Derechohabiencia">
+              <MappingFragment StoreEntitySet="Derechohabiencia">
+                <ScalarProperty Name="DerechohabienciaId" ColumnName="DerechohabienciaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleCita">
+            <EntityTypeMapping TypeName="Models.DetalleCita">
+              <MappingFragment StoreEntitySet="DetalleCita">
+                <ScalarProperty Name="DetalleCitaId" ColumnName="DetalleCitaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="CitaId" ColumnName="CitaId" />
+                <ScalarProperty Name="EstudianteId" ColumnName="EstudianteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallePaciente">
+            <EntityTypeMapping TypeName="Models.DetallePaciente">
+              <MappingFragment StoreEntitySet="DetallePaciente">
+                <ScalarProperty Name="DetPacId" ColumnName="DetPacId" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+                <ScalarProperty Name="Cp" ColumnName="Cp" />
+                <ScalarProperty Name="DerechohabienciaId" ColumnName="DerechohabienciaId" />
+                <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
+                <ScalarProperty Name="OcupacionId" ColumnName="OcupacionId" />
+                <ScalarProperty Name="EscolaridadId" ColumnName="EscolaridadId" />
+                <ScalarProperty Name="PacienteId" ColumnName="PacienteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diagnostico">
+            <EntityTypeMapping TypeName="Models.Diagnostico">
+              <MappingFragment StoreEntitySet="Diagnostico">
+                <ScalarProperty Name="DiagnosticoId" ColumnName="DiagnosticoId" />
+                <ScalarProperty Name="Diente" ColumnName="Diente" />
+                <ScalarProperty Name="Sintoma" ColumnName="Sintoma" />
+                <ScalarProperty Name="CitaId" ColumnName="CitaId" />
+                <ScalarProperty Name="SintomaId" ColumnName="SintomaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enfermedad">
+            <EntityTypeMapping TypeName="Models.Enfermedad">
+              <MappingFragment StoreEntitySet="Enfermedad">
+                <ScalarProperty Name="EnfermedadId" ColumnName="EnfermedadId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Escolaridad">
+            <EntityTypeMapping TypeName="Models.Escolaridad">
+              <MappingFragment StoreEntitySet="Escolaridad">
+                <ScalarProperty Name="EscolaridadId" ColumnName="EscolaridadId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Escuela">
+            <EntityTypeMapping TypeName="Models.Escuela">
+              <MappingFragment StoreEntitySet="Escuela">
+                <ScalarProperty Name="EscuelaId" ColumnName="EscuelaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="Models.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estudiante">
+            <EntityTypeMapping TypeName="Models.Estudiante">
+              <MappingFragment StoreEntitySet="Estudiante">
+                <ScalarProperty Name="EstudianteId" ColumnName="EstudianteId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="EscuelaId" ColumnName="EscuelaId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ocupacion">
+            <EntityTypeMapping TypeName="Models.Ocupacion">
+              <MappingFragment StoreEntitySet="Ocupacion">
+                <ScalarProperty Name="OcupacionId" ColumnName="OcupacionId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paciente">
+            <EntityTypeMapping TypeName="Models.Paciente">
+              <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="PacienteId" ColumnName="PacienteId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parentesco">
+            <EntityTypeMapping TypeName="Models.Parentesco">
+              <MappingFragment StoreEntitySet="Parentesco">
+                <ScalarProperty Name="ParentescoId" ColumnName="ParentescoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sintoma">
+            <EntityTypeMapping TypeName="Models.Sintoma">
+              <MappingFragment StoreEntitySet="Sintoma">
+                <ScalarProperty Name="SintomaId" ColumnName="SintomaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Models.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

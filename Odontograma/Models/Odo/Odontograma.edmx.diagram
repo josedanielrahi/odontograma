@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c5046f99f4b4403084b39d292192b9d7" Name="Diagram1">
+        <EntityTypeShape EntityType="Models.AntFam" Width="1.5" PointX="7.5" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AntPer" Width="1.5" PointX="7.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AspNetRoles" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AspNetUsers" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Cita" Width="1.5" PointX="10.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Clinica" Width="1.5" PointX="8.25" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Derechohabiencia" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.DetalleCita" Width="1.5" PointX="12.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.DetallePaciente" Width="1.5" PointX="7.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Diagnostico" Width="1.5" PointX="12.75" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Enfermedad" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Escolaridad" Width="1.5" PointX="5.25" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Escuela" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Estado" Width="1.5" PointX="5.25" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Estudiante" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Ocupacion" Width="1.5" PointX="5.25" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Paciente" Width="1.5" PointX="5.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Parentesco" Width="1.5" PointX="5.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Sintoma" Width="1.5" PointX="10.5" PointY="15" IsExpanded="true" />
+        <AssociationConnector Association="Models.FK__AntFam__Enfermed__0E04126B" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__AntFam__Paciente__0EF836A4" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__AntFam__Parentes__0D0FEE32" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__AntPer__Enfermed__084B3915" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__AntPer__Paciente__093F5D4E" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__Estudiant__UserI__18B6AB08" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__Paciente__UserId__11158940" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__Cita__ClinicaId__4A4E069C" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__Cita__PacienteId__4B422AD5" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__DetalleCi__CitaI__57A801BA" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__Diagnosti__CitaI__4F12BBB9" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__DetallePa__Derec__318258D2" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__DetalleCi__Estud__589C25F3" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__DetallePa__Escol__345EC57D" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__DetallePa__Estad__32767D0B" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__DetallePa__Ocupa__336AA144" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__DetallePa__Pacie__5D60DB10" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__Diagnosti__Sinto__6319B466" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK__Estudiant__Escue__17C286CF" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

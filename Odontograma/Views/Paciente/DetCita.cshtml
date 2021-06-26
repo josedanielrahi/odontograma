@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Odontograma.Models.Odo.VerEstudiante>
+@{
+    ViewBag.Title = "Confirmado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2 class="p-3 text-center">Detalle de la confirmacion</h2>
+    @foreach (var item in Model)
+    {
+        <div class="text-center">
+            <h4>Cita</h4>
+            <h6><strong>Fecha: </strong> @Html.DisplayFor(modelItem => item.cita.Fecha)</h6>
+            <h6><strong>Hora: </strong> @Html.DisplayFor(modelItem => item.cita.Hora)</h6>
+            <h6><strong>En: </strong> @Html.DisplayFor(modelItem => item.cita.Clinica.Nombre)</h6>
+            <h4>Datos del estudiante</h4>
+            <h6><strong>Nombre: </strong> @Html.DisplayFor(modelItem => item.estudiante.Nombre)</h6>
+            <h6><strong>Apellido: </strong> @Html.DisplayFor(modelItem => item.estudiante.Apellido)</h6>
+            <h6><strong>Telefono: </strong> @Html.DisplayFor(modelItem => item.estudiante.Telefono)</h6>
+            <h6><strong>Escuela: </strong> @Html.DisplayFor(modelItem => item.estudiante.Escuela.Nombre)</h6>
+                  </div>
+
+
+    }
+    <div class="mt-4 text-center">
+        @Html.ActionLink("Regresar al inicio", "Index", "Paciente", null, new { @class = "p-2 btn btn-outline-dark" })
+    </div>
+</div>
+

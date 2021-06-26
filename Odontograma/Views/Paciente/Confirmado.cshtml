@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Odontograma.Models.Odo.Cita>
+@{
+    ViewBag.Title = "Confirmado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2 class="mt-4 mb-4">Estas son tus citas confirmadas</h2>
+
+
+
+    <div class="table-responsive">
+        <table class="table" id="miTabla">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(m => m.Fecha)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.Hora)</th>
+                    <th scope="col">@Html.DisplayNameFor(m => m.Clinica)</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fecha)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hora)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Clinica.Nombre)
+                        </td>
+                        <td>
+                            <div class="btn btn-link">
+                                @Html.ActionLink("¿Quien me confirmo?", "DetCita", new { id = item.CitaId })
+                            </div>
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#miTabla').DataTable({
+                //"paging": false,
+                "ordering": false,
+                "info": false,
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sSearch": "Buscar:",
+                    "oPaginate": {
+                        "sFirst": " Primero ",
+                        "sLast": " Último ",
+                        "sNext": " Siguiente &raquo;",
+                        "sPrevious": " &laquo; Anterior "
+                    },
+                    "sProcessing": "Procesando...",
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Odontograma.Models.Odo.Cita>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    @if (ViewBag.Ex == "0")
+    {
+        <div class="mt-4 p-3 alert-success slide">
+            <h4 class="text-center">
+                <strong>
+                    ¡Felicidades!
+                </strong>
+
+                acabas de ser aceptado para formar parte de la comunidad de estudiantes registrados en Odontograma un último paso necesitamos que
+
+                termines tu registro para poder empezar a ver el catálogo de citas
+
+
+            </h4>
+            <div class="text-center">
+                @Html.ActionLink("Completar mis datos", "Nuevo", "Estudiante", null, new { @class = "btn btn-dark", title = "Ir a mis datos" })
+            </div>
+
+        </div>
+    }
+    else
+    {
+        <h2 class="mt-5">Catálogo de citas</h2>
+        <div class="mb-2 text-right">
+
+            @Html.ActionLink("Confirmadas", "Confirmadas", "Estudiante", null, new { @class = "p-2 btn btn-outline-dark" })
+            @Html.ActionLink("Atendidas", "Atendidas", "Estudiante", null, new { @class = "p-2 btn btn-outline-dark" })
+        </div>
+
+        <div class="table-responsive">
+            <table class="table" id="miTabla">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">@Html.DisplayNameFor(m => m.Fecha)</th>
+                        <th scope="col">@Html.DisplayNameFor(m => m.Hora)</th>
+                        <th scope="col">@Html.DisplayNameFor(m => m.Clinica)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Fecha)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Hora)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Clinica.Nombre)
+                            </td>
+                            <td>
+                                <div class="btn btn-link">
+                                    @Html.ActionLink("Detalle", "Detalle", new { id = item.CitaId })
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    }
+
+
+
+
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#miTabla').DataTable({
+                //"paging": false,
+                "ordering": false,
+                "info": false,
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sSearch": "Buscar:",
+                    "oPaginate": {
+                        "sFirst": " Primero ",
+                        "sLast": " Último ",
+                        "sNext": " Siguiente &raquo;",
+                        "sPrevious": " &laquo; Anterior "
+                    },
+                    "sProcessing": "Procesando...",
+                }
+            });
+        });
+    </script>
+}

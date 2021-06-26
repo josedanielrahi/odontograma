@@ -1,0 +1,80 @@
+﻿
+@model IEnumerable<IdentitySample.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Solicitudes";
+}
+
+
+<div class="container">
+    <h4 class="mt-4">Lista de solicitantes</h4>
+
+    <div class="table-responsive">
+        <table class="table" id="miTabla">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Nombre de usuario</th>
+                    <th scope="col">Correo electronico</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+
+                        </td>
+
+                        <td>
+                            <div class="btn btn-link">
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Id })
+                            </div>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+</div>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#miTabla').DataTable({
+                //"paging": false,
+                "ordering": false,
+                "info": false,
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sSearch": "Buscar:",
+                    "oPaginate": {
+                        "sFirst": " Primero ",
+                        "sLast": " Último ",
+                        "sNext": " Siguiente &raquo;",
+                        "sPrevious": " &laquo; Anterior "
+                    },
+                    "sProcessing": "Procesando...",
+                }
+            });
+        });
+    </script>
+}

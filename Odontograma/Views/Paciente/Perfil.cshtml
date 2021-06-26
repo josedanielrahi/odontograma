@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+        <h2 class="mb-4 mt-4 text-center">Tu historia clinica</h2>
+
+        <!--Datos Escritos-->
+
+        <div class="row">
+            <div class="col text-right">
+                @foreach (var item in ViewBag.Paciente)
+                {
+                    <p><strong>Nombre: </strong> @item.Nombre</p>
+                    <p><strong>Apellido: </strong> @item.Apellido</p>
+                    <p><strong>Fecha de nacimiento: </strong> @item.FechaNacimiento</p>
+                    <p> 
+                       @if (item.Sexo == "M")
+                       {
+                           <p><strong>Sexo: </strong> Masculino</p>
+                       }
+                       else
+                       {
+                           <p><strong>Sexo: </strong> Femenino</p>
+                       }
+                    </p>
+                }
+            </div>
+
+            <div class="col">
+                @foreach (var item in ViewBag.Detalle)
+                {
+
+                    <p class="mr-2"><strong> Calle: </strong> @item.Calle    </p>
+                    <p class="mr-2"><strong> Colonia: </strong> @item.Colonia </p>
+                    <p class="mr-2"><strong> CP: </strong> @item.Cp </p>
+                    <p><strong>Institución de derechohabiencia: </strong> @item.Derechohabiencia.Alias</p>
+                    <p><strong>Estado de procedencia: </strong> @item.Estado.Nombre</p>
+                    <p><strong>Ocupacion: </strong> @item.Ocupacion.Nombre</p>
+                    <p><strong>Escolaridad: </strong> @item.Escolaridad.Nombre</p>
+                  }
+            </div>
+        </div>
+
+
+        <div class="mt-3 row text-center">
+            <div class="col">
+                <div class="table-responsive">
+                    <h4 class="mb-2">Enfermedades patologicas personales</h4>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Enfermedad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          @foreach (var item in ViewBag.AntPer)
+                          {
+                              <tr>
+                                  <td>@item.Enfermedad.Nombre</td>
+                              </tr>
+                          }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="table-responsive">
+                    <h4>Enfermedades patologicas hereditarios</h4>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Enfermedad</th>
+                                <th>Nombre</th>
+                                <th>Parentesco</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.AntFam)
+                            {
+                                <tr>
+                                    <td>@item.Enfermedad.Nombre</td>
+                                    <td>@item.NombreCompleto</td>
+                                    <td>@item.Parentesco.Nombre</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>

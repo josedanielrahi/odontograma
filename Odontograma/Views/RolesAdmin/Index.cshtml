@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="mt-4 container">
+    <h4>Lista de roles</h4>
+
+    <p class=text-right>
+        @Html.ActionLink("Nuevo rol", "Create", new { @class = "btn btn-outline-dark" })
+    </p>
+
+
+    <div class="table-responsive">
+        <table class="table" id="miTabla">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td> @Html.ActionLink("Editar", "Edit", new { id = item.Id })</td>
+                        <td>  @Html.ActionLink("Borrar", "Delete", new { id = item.Id })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#miTabla').DataTable({
+                //"paging": false,
+                "ordering": false,
+                "info": false,
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sSearch": "Buscar:",
+                    "oPaginate": {
+                        "sFirst": " Primero ",
+                        "sLast": " Último ",
+                        "sNext": " Siguiente &raquo;",
+                        "sPrevious": " &laquo; Anterior "
+                    },
+                    "sProcessing": "Procesando...",
+                }
+            });
+        });
+    </script>
+}
+
+

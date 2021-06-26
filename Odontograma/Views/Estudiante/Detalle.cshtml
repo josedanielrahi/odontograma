@@ -1,0 +1,35 @@
+﻿
+
+@model IEnumerable<Odontograma.Models.Odo.DetalleCitaModel>
+
+    @{
+        ViewBag.Title = "Detalle";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+    <div class="container">
+        <h1 class="mt-5 text-center">Detalle de la cita</h1>
+
+        <div class="text-center">
+            @foreach (var item in Model)
+            {
+                <h3 class="mb-3">Datos del paciente</h3>
+
+                <h6><strong>Nombre:</strong> @Html.DisplayFor(modelItem => item.paciente.Nombre)</h6>
+                <h6><strong>Apellido:</strong> @Html.DisplayFor(modelItem => item.paciente.Apellido)</h6>
+                <h6><strong>Teléfono:</strong>  @Html.DisplayFor(modelItem => item.paciente.Telefono)</h6>
+                <h6><strong>Fecha:</strong>  @Html.DisplayFor(modelItem => item.cita.Fecha)</h6>
+                <h6><strong>Hora: </strong> @Html.DisplayFor(modelItem => item.cita.Hora)</h6>
+                <h6><strong>En: </strong> @Html.DisplayFor(modelItem => item.cita.Clinica.Nombre)</h6>
+                <div class="text-dark">
+                    <strong>¿El paciente te confirmo?</strong>
+                    @Html.ActionLink("Si me confirmo", "Confirmar", new { id = item.cita.CitaId })
+                    <br />
+                    @Html.ActionLink("Regresar al catalogo", "Index", new { id = item.cita.CitaId })
+                </div>
+            }
+        </div>
+
+
+    </div>

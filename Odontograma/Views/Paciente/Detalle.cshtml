@@ -1,0 +1,93 @@
+﻿@model Odontograma.Models.Odo.DetalleViewModel
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+        <div class="mt-2 text-center ">
+            <h2>Historia clinica</h2>
+            <div class="row m-0 justify-content-center align-items-center">
+                <div class="mt-2 progress w-50">
+                    <div class="bg-secondary progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                        50%
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col">
+                <h4 class="mb-4 mt-2">Datos Adicionales</h4>
+                @using (Html.BeginForm("Detalle", "Paciente", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    <div class="input-group input-group-sm mb-3">
+                        @Html.LabelFor(m => m.Calle, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(m => m.Calle, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3">
+                        @Html.LabelFor(m => m.Colonia, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(m => m.Colonia, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        @Html.LabelFor(m => m.Cp, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(m => m.Cp, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3">
+                        @Html.LabelFor(m => m.DerechohabienciaId, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.DropDownList("DerechohabienciaId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DerechohabienciaId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        @Html.LabelFor(m => m.EstadoId, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.DropDownList("EstadoId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EstadoId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        @Html.LabelFor(m => m.OcupacionId, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.DropDownList("OcupacionId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.OcupacionId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        @Html.LabelFor(m => m.EscolaridadId, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.DropDownList("EscolaridadId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EscolaridadId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="col-md-7">
+                            <div class="text-right">
+                                <input type="submit" class="btn btn-lg btn-dark" value="Avanzar" />
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

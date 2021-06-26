@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+
+
+
+
+        if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <div class="dropdown">
+                <a class="ml-2 text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Hola @User.Identity.Name
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+                    
+                    @Html.ActionLink("Portal", "Index", "Manage", null, new { @class = "dropdown-item text-dark", title = "Analisis de datos" })
+                    @Html.ActionLink("Roles", "Index", "RolesAdmin", null, new { @class = "dropdown-item text-dark", title = "Lista de roles" })
+                    @Html.ActionLink("Usuarios", "Index", "UsersAdmin", null, new { @class = "dropdown-item text-dark", title = "Solicitudes cuenta de estudiante" })
+                    @Html.ActionLink("Solicitudes", "Solicitudes", "UsersAdmin", null, new { @class = "dropdown-item text-dark", title = "Lista de usuarios" })
+                    <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item text-dark">Salir</a>
+                </div>
+            </div>
+
+
+        }
+
+
+        if (Request.IsAuthenticated && User.IsInRole("Paciente"))
+        {
+            <div class="dropdown">
+                <a class="ml-2 text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Hola @User.Identity.Name
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    @Html.ActionLink("Pendientes", "Index", "Paciente", null, new { @class = "dropdown-item text-dark", title = "Citas pendientes" })
+                    @Html.ActionLink("Confirmadas", "Confirmado", "Paciente", null, new { @class = "dropdown-item text-dark", title = "Citas confirmadas" })
+                    @Html.ActionLink("Historial", "Historial", "Paciente", null, new { @class = "dropdown-item text-dark", title = "Historial de citas" })
+                    @Html.ActionLink("Mi perfil", "Perfil", "Paciente", null, new { @class = "dropdown-item text-dark", title = "Mis datos" })
+                    <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item text-dark">Salir</a>
+                </div>
+            </div>
+
+        }
+
+        if (Request.IsAuthenticated && User.IsInRole("Estudiante"))
+        {
+            @Html.ActionLink("Hola " + User.Identity.Name, "Index", "Estudiante", null, new { @class = "ml-2 text-white", title = "Manage" })
+            <a href="javascript:document.getElementById('logoutForm').submit()" class="ml-3 text-white">Salir</a>
+        }
+        if (Request.IsAuthenticated && User.IsInRole("Solicitud"))
+        {
+            @Html.ActionLink("Hola " + User.Identity.Name, "Index", "Solicitud", null, new { @class = "ml-2 text-white", title = "Manage" })
+            <a href="javascript:document.getElementById('logoutForm').submit()" class="ml-3 text-white">Salir</a>
+        }
+
+
+    }
+}
+else
+{
+    <ul class="my-2 my-lg-1">
+        @Html.ActionLink("Registrarme", "Register", "Account", null, new { @class = "ml-2 text-white", id = "registerLink" })
+        @Html.ActionLink("Entrar", "Login", "Account", null, new { @class = "ml-2 text-white", id = "loginLink" })
+    </ul>
+}

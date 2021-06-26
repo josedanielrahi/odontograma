@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Odontograma.Models.Odo.Expediente>
+@{
+    ViewBag.Title = "VerDiagnostico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="container">
+        <h2 class="p-3 text-center">Detallle del procedimiento</h2>
+
+
+        <div class="text-center">
+            <div class="row">
+                <div class="col">
+                    <h4>Cita</h4>
+                    @foreach (var item in ViewBag.Cita)
+                    {
+                        <h6><strong>Fecha: </strong> @item.Fecha</h6>
+                        <h5><strong>Hora: </strong> @item.Hora</h5>
+                    }
+                    <h4>Paciente</h4>
+                    @foreach (var item in ViewBag.Paciente)
+                    {
+                        <h6><strong>Nombre: </strong> @item.Nombre</h6>
+                        <h6><strong>Apellido: </strong> @item.Apellido</h6>
+                        <h6><strong>Telefono: </strong> @item.Telefono</h6>
+                        @Html.ActionLink("Historia clinica","PerfilPaciente", new { id=item.PacienteId})
+
+                    }
+
+                </div>
+                <div class="col">
+
+                    <h4>Datos adicionales</h4>
+                    @foreach (var item in ViewBag.Detalle)
+                    {
+                        <h5>Descripción</h5>
+                        <h6>@item.Descripcion</h6>
+                        <h5>Observacion</h5>
+                        <h6>@item.Observacion</h6>
+
+                    }
+                </div>
+            </div>
+        </div>
+        <h4 class="p-2 text-center">Diagnostico</h4>
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Diente</th>
+                        <th>Presenta</th>
+                        <th>Se propone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Diagnostico)
+                    {
+                        <tr>
+                            <td>@item.Diente</td>
+                            <td>@item.Sintoma1.Nombre</td>
+                            <td>@item.Sintoma</td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="mt-4 text-center">
+            @Html.ActionLink("Regresar al catalogo", "Index", "Estudiante", null, new { @class = "p-2 btn btn-outline-dark" })
+        </div>
+    </div>
+
+
+
+

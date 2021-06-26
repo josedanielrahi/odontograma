@@ -1,0 +1,100 @@
+﻿@model Odontograma.Models.Odo.AntFamViewModel
+@{
+    ViewBag.Title = "AntFam";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+        <div class="mt-2 text-center ">
+            <h2>Historia clinica</h2>
+            <div class="row m-0 justify-content-center align-items-center">
+                <div class="mt-2 progress w-50">
+                    <div class="bg-secondary progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                        100% Ultimo paso
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h4 class="mt-3">Antecedente patológicos personales o hereditarios </h4>
+
+                <div class="p-2 alert-danger">
+                    Agrega las enfermedades que algún familiar ha padecido o si alguien de tu familia las padece agrégalas
+                </div>
+                @using (Html.BeginForm("AntFam", "Paciente", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    <div class="input-group mb-10">
+                        @Html.LabelFor(m => m.NombreCompleto, new { @class = "control-label" })
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.NombreCompleto, new { @class = "form-control", @type = "text" })
+                        </div>
+                    </div>
+
+
+                    <div class="input-group mb-10">
+                        @Html.LabelFor(m => m.ParentescoId, new { @class = "control-label" })
+                        <div class="col-md-12">
+                            @Html.DropDownList("ParentescoId", null, htmlAttributes: new { @class = "mb-2 form-control" })
+                            @Html.ValidationMessageFor(m => m.ParentescoId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-10">
+                        @Html.LabelFor(m => m.EnfermedadId, new { @class = "control-label" })
+                        <div class="col-md-12">
+                            @Html.DropDownList("EnfermedadId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EnfermedadId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="input-group mt-3">
+                        <div class="col">
+                            <div class="text-right">
+                                @if (ViewBag.Existe == 1)
+                                {
+                                    @Html.ActionLink("Terminar", "Index")
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Omitir", "Index")
+                                }
+                                <input type="submit" class="btn  btn-dark" value="Agregar" />
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="col">
+                <div class="mt-5 table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Enfermedad</th>
+                                <th scope="col">Parentesco</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.AntFam)
+                            {
+                                <tr>
+                                    <td>@item.NombreCompleto</td>
+                                    <td>@item.Enfermedad.Nombre</td>
+                                    <td>@item.Parentesco.Nombre</td>
+                                    <td>@Html.ActionLink("Eliminar", "EliminarFam", new { id = item.AntFamId })</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
